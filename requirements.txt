@@ -1,0 +1,6 @@
+llama-index 
+openai 
+streamlit 
+python-dotenv 
+chromadb 
+llama-index-vector-stores-chroma 
