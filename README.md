@@ -40,19 +40,19 @@ RAG は「①質問に関連する社内文書を検索してから、②その�
 
 ```mermaid
 flowchart TD
-    subgraph Ingest["① 事前準備：インデックス構築 (build_index.py)"]
-        A[社内文書 data/*.md] --> B[チャンク分割<br/>SentenceSplitter]
-        B --> C[埋め込みベクトル化<br/>OpenAI Embeddings]
-        C --> D[(ChromaDB<br/>ベクトルストア)]
+    subgraph Ingest["1. 事前準備：インデックス構築（build_index.py）"]
+        A["社内文書 data/ 内の .md"] --> B["チャンク分割<br/>SentenceSplitter"]
+        B --> C["埋め込みベクトル化<br/>OpenAI Embeddings"]
+        C --> D[("ChromaDB<br/>ベクトルストア")]
     end
 
-    subgraph Query["② 実行時：質問への回答 (app.py)"]
-        Q[ユーザーの質問] --> E[質問をベクトル化]
-        E --> F[類似文書を検索<br/>top-k retrieval]
+    subgraph Query["2. 実行時：質問への回答（app.py）"]
+        Q["ユーザーの質問"] --> E["質問をベクトル化"]
+        E --> F["類似文書を検索<br/>top-k retrieval"]
         D --> F
-        F --> G[検索結果＋質問を<br/>プロンプトに合成]
-        G --> H[LLM が回答生成<br/>OpenAI gpt-4o-mini]
-        H --> R[回答 ＋ 参照文書名]
+        F --> G["検索結果と質問を<br/>プロンプトに合成"]
+        G --> H["LLM が回答生成<br/>OpenAI gpt-4o-mini"]
+        H --> R["回答 と 参照文書名"]
     end
 ```
 
