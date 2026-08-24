@@ -1,6 +1,20 @@
-llama-index 
-openai 
-streamlit 
-python-dotenv 
-chromadb 
-llama-index-vector-stores-chroma 
+# 本体（RAG フレームワーク）
+llama-index==0.14.24
+llama-index-vector-stores-chroma==0.5.5
+llama-index-embeddings-openai==0.6.0
+llama-index-llms-openai==0.7.10
+
+# LLM / 埋め込み（OpenAI）
+openai==2.54.0
+
+# ベクトルデータベース
+chromadb==1.5.9
+
+# Web チャットUI
+streamlit==1.62.0
+
+# 環境変数（.env）読み込み
+python-dotenv==1.2.3
+
+# テスト（開発用）
+pytest==9.1.1
